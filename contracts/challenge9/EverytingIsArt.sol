@@ -1,8 +1,8 @@
 pragma solidity ^0.6.0;
 
 // Using  @openzeppelin/contracts@3.2.0
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin3/contracts/math/SafeMath.sol";
+import "@openzeppelin3/contracts/token/ERC721/ERC721.sol";
 
 
 contract EverytingIsArt is ERC721 {
