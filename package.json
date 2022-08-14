@@ -28,6 +28,7 @@
   "dependencies": {
     "crypto-js": "^4.1.1",
     "ethereum-cryptography": "^1.1.2",
-    "merkletreejs": "^0.2.32"
+    "merkletreejs": "^0.2.32",
+    "web3": "^1.7.5"
   }
 }
