@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.1;
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-pragma solidity ^0.8.0;
 
-contract Cert {
+contract Cert is IERC20 {
     mapping(address => uint256) private _balances;
     mapping(address => mapping(address => uint256)) private _allowances;
 
@@ -37,7 +36,7 @@ contract Cert {
     }
 
     constructor () {
-        _mint(msg.sender, 100*10**18);
+        _mint(msg.sender, 10000);
 
     }
 
@@ -130,11 +129,11 @@ contract TrusterLenderPool is ReentrancyGuard {
     IERC20 public immutable token0;
     IERC20 public immutable token1;
 
-    constructor (address token0Address,address token1Address) {
+    constructor () {
         token0 = new Cert();
-        token0.mint(address(this), 10000);
+//        token0.mint(address(this), 10000);
         token1 = new Cert();
-        token1.mint(address(this), 10000);
+//        token1.mint(address(this), 10000);
     }
 
     function swap(address tokenAddress,uint amount) public returns(uint){
