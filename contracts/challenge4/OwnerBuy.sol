@@ -1,4 +1,4 @@
-// 0.5.1-c8a2
+    // 0.5.1-c8a2
 // Enable optimization
 pragma solidity ^0.5.0;
 import "./contracts/ERC20.sol";
