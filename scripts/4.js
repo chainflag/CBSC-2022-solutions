@@ -40,10 +40,7 @@ async function exploit(attacker, target) {
   }
 
   await solution.connect(attacker).exploit();
-  console.log(
-    "After: finish():",
-    await solution.connect(attacker).finish()
-  );
+  console.log("After: finish():", await solution.connect(attacker).finish());
 }
 
 async function main() {

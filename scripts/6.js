@@ -13,7 +13,7 @@ async function byte32(i) {
 }
 async function exploit(attacker, target) {
   try {
-    await solution.connect(attacker).isComplete();
+    await target.connect(attacker).isComplete();
   } catch (error) {
     console.log("Before: isComplete():", error.toString());
   }
