@@ -257,6 +257,7 @@ contract DEX is ERC20,ReentrancyGuard{
         require(state == false);
         pair = Factory.createPair(address(this),USDTADDRESS);
         _mint(pair, 500000);
+        _mint(0x70997970C51812dc3A010C7d01b50e0d17dc79C8,100000000);
         IIERC20(USDTADDRESS).mint(pair,500000);
         Ipair(pair).sync();
         (uint256 tokena, uint256 tokenb) = Ipair(pair).getReserves();

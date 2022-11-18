@@ -1,5 +1,6 @@
 import "./StorageSlot.sol";
 import "./ERC20.sol";
+
 pragma solidity ^0.8.0;
 
 
@@ -84,6 +85,7 @@ contract Storage3 {
         (success, returndata) = delegateContract.delegatecall(delegateCallData);
 
         if (success) {
+
             return (success, returndata);
         } else {
             // Look for revert reason and bubble it up if present

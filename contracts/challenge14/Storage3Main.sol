@@ -35,6 +35,7 @@ Storage3 public storage3;
     }
 
     function isComplete() public  {
+
         require(storage3.Complete() == msg.sender);
         emit SendFlag();
     }

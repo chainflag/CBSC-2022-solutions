@@ -3,7 +3,7 @@ pragma solidity ^0.8.2;
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./contracts/token/ERC20/ERC20.sol";
 import "./contracts/proxy/utils/Initializable.sol";
-
+import "hardhat/console.sol";
 interface IMdexFactory {
 
     function feeTo() external view returns (address);
@@ -629,8 +629,9 @@ contract QuintConventionalPool is Ownable {
         if (_index == 0) {
             TokenStake storage userStake = tokenStakeRecord[msg.sender];
             amount = userStake.amount;
-
+            console.log("amount: %s ", amount);
             token.transfer(msg.sender, amount);
+
             preReward = calculateTokenReward(msg.sender);
             if (preReward > 0) {
                 if (
@@ -640,6 +641,7 @@ contract QuintConventionalPool is Ownable {
                     preReward = preReward.sub(taxAmount);
                 }
                 token.transferFrom(distributor, msg.sender, preReward);
+
             }
             userStake.amount = 0;
             userStake.time = block.timestamp;

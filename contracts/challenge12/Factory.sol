@@ -126,8 +126,8 @@ contract TTPair is ITTPair, TTERC20, ReentrancyGuard {
     address public override token1;
     address public override router;
 
-    uint128 private reserve0; 
-    uint128 private reserve1;
+    uint128 public reserve0; 
+    uint128 public reserve1;
 
     uint256 public kLast;
 

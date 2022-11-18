@@ -1,7 +1,7 @@
 pragma solidity ^0.8.0;
 
 import "./openzeppelin/contracts/token/ERC20/IERC20.sol";
-
+import "hardhat/console.sol";
 library SafeMath {
     uint256 constant WAD = 10 ** 18;
     uint256 constant RAY = 10 ** 27;
@@ -304,6 +304,7 @@ contract MdexPair  {
         (uint _reserve0, uint _reserve1,) = getReserves();
         // gas savings
         require(amount0Out < _reserve0 && amount1Out < _reserve1, 'MdexSwap: INSUFFICIENT_LIQUIDITY');
+
         require(!isContract(msg.sender));
         uint balance0;
         uint balance1;
@@ -312,11 +313,12 @@ contract MdexPair  {
             address _token0 = token0;
             address _token1 = token1;
             require(to != _token0 && to != _token1, 'MdexSwap: INVALID_TO');
+
             if (amount0Out > 0) _safeTransfer(_token0, to, amount0Out);
             // optimistically transfer tokens
             if (amount1Out > 0) _safeTransfer(_token1, to, amount1Out);
             // optimistically transfer tokens
-            
+
             if (data.length > 0) IHswapV2Callee(to).hswapV2Call(msg.sender, amount0Out, amount1Out, data);
             balance0 = IERC20(_token0).balanceOf(address(this));
             balance1 = IERC20(_token1).balanceOf(address(this));
