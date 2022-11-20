@@ -6,5 +6,5 @@ Try running some of the following tasks:
 
 ```shell
 npx hardhat help
-npx hardhat run scripts/{1-9}.js
+npx hardhat run scripts/{1-15}.js
 ```
