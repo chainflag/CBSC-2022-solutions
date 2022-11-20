@@ -156,13 +156,18 @@ library UQ112x112 {
 
     // encode a uint as a UQ112x112
     function encode(uint y) internal pure returns (uint224 z) {
-        z = uint224(y) * Q112;
+
+        unchecked{
+            z = uint224(y) * Q112;
+        }
         // never overflows
     }
 
     // divide a UQ112x112 by a uint, returning a UQ112x112
     function uqdiv(uint224 x, uint y) internal pure returns (uint224 z) {
+    unchecked{
         z = x / uint224(y);
+    }
     }
 }
 interface IMdexERC20 {
